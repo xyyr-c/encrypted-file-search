@@ -1,7 +1,6 @@
 <template>
 <div class="form">
-        <el-row :gutter="10">
-          <el-col :span="40">
+          <el-col :span="24">
             <el-card class="box-card tag" shadow="hover">
               <el-upload
                 class="upload-demo"
@@ -13,8 +12,7 @@
                 :auto-upload="true"
                 :limit="1"
               >
-                <i class="el-icon-upload"></i>
-                <div class="el-upload__text">
+                <div class="el-upload__text" style="font-size: 40px">
                   将文件拖到此处，或<em>点击上传</em>
                 </div>
                 <div class="el-upload__tip" slot="tip">
@@ -23,7 +21,6 @@
               </el-upload>
             </el-card>
           </el-col>
-        </el-row>
       </div>
 
 </template>
@@ -62,13 +59,29 @@ function upload_file (param: UploadFileParam) {
 </script>
 
 <style scoped>
-::v-deep .upload-demo  .el-upload-dragger {
+::v-deep .upload-demo   {
     height: 475px; /* 调整高度 */
     width: 100%; /* 调整宽度 */
 }
-.el-upload__text {
+::v-deep .el-upload__text {
   height: auto; /* 调整文本区域的高度 */
   line-height: 1.5; /* 调整文本区域的行高 */
-  margin-top: 40px; /* 调整文本区域的上边距 */
+  font-size: x-large; /* 调整文本区域的字体大小 */
+  color: #c74b0d; /* 调整文本区域的字体颜色 */
+  text-align: center; /* 调整文本区域的文本对齐方式 */
+  margin-bottom: 10px; /* 调整文本区域下边距 */
+}
+.el-upload__tip {
+  font-size: 14px; /* 调整提示文本的字体大小 */
+  color: #909399; /* 调整提示文本的字体颜色 */
+}
+:deep(.el-upload-dragger) {
+  flex: 1; /* 拖拽区域填充空间 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 内容垂直居中 */
+  align-items: center;
+  height: 475px; /* 调整高度 */
+  width: 100%; /* 调整宽度 */
 }
 </style>

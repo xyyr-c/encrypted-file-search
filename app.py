@@ -27,7 +27,7 @@ CORS(app,supports_credentials=True)  # 跨域支持
 app.config['SECRET_KEY'] = 'BTJybk4hjV3c3FTbb7BY'  # 请替换为一个更安全的随机字符串
 
 
-@app.route('/api/auth/register', methods=["POST"])
+@app.route('/func/register', methods=["POST"])
 def register():
     print(request)
     resp = {}
@@ -55,7 +55,7 @@ def register():
     conn.close()
     return jsonify(resp)
 
-@app.route("/api/auth/login", methods=["POST"])
+@app.route("/func/login", methods=["POST"])
 def login():
     resp = {}
     conn = POOL.connection()
@@ -75,22 +75,32 @@ def login():
         # 验证密码是否匹配
         if bcrypt.checkpw(pwd.encode('utf-8'), stored_password.encode('utf-8')):
             session['user'] = user
-            resp['status'] = "success"
+            resp['header'] = {"code": 200, "message": "success"}
         else:
-            resp['status'] = "error"
+            resp['header'] = {"code": 401, "message": "Invalid username or password"}
 
     cursor.close()
     conn.close()
     return jsonify(resp)
 
-@app.route('/api/auth/logout', methods=["POST"])
+@app.route('/func/logout', methods=["POST"])
 def logout():
     resp = {}
     session.pop('user', None)  # 清除 Session
     resp['status'] = "success"
     return jsonify(resp)
 
-
+@app.route('/func/upload', methods=["POST"])
+def upload():
+    uploaded_file = request.files.get('file')  # 获取前端发送的文件
+    
+    if not uploaded_file:
+        return jsonify({"error": "No file uploaded"}), 400
+    
+    print(f"Received file: {uploaded_file.read()}")
+    # 这里可以保存文件：uploaded_file.save("path/to/save")
+    
+    return jsonify({"status": "success", "filename": uploaded_file.filename})
  
 
 if __name__ == '__main__':

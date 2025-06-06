@@ -33,14 +33,14 @@
     console.log('Username:', username.value);
     console.log('Password:', password.value);
     // if(validatePassword(password.value)){
-    axios.post('/api/auth/register', {
+    axios.post('/func/register', {
       "username": username.value,
       "password": password.value
     }).then(response => {
       console.log(response.data);
-      if (response.data.status == "success")
+      if (response.data.header.message == "success")
       {
-        alert(response.data.msg)
+        
         window.location.href = "/"
       }
       // else

@@ -30,13 +30,13 @@
     let mySessionCookie = ref('');
 
     // 处理登录逻辑
-    axios.post('/api/auth/login', {
+    axios.post('/func/login', {
       "username": username.value,
       "password": password.value
     },{ withCredentials: true }).then(response => {
       // 处理登录成功逻辑
       console.log(response.data);
-      if (response.data.status == "success")
+      if (response.data.header.message == "success")
       {
         // document.cookie = "username=" + username.value + "; max-age=" + (7 * 24 * 60 * 60) + "; path=/";
         sessionStorage.setItem("username", username.value)

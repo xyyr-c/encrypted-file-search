@@ -42,7 +42,7 @@
           }, 0)
       }
       //http://127.0.0.1:5000/api/auth/logout
-      axios.post('/api/auth/logout', {
+      axios.post('/func/logout', {
         "username": username
       },{ withCredentials: true }).then(response => {
         // 处理登出逻辑

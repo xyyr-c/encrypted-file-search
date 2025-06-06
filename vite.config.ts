@@ -26,25 +26,18 @@ export default defineConfig({
       cert: fs.readFileSync("./https/web.crt"),
     },
     proxy: {
-        '/api':
-        {
-          target: 'https://127.0.0.1:9999',
-          changeOrigin: true,
-          secure:false,
-        },
         '/func':
         {
-          target: 'https://127.0.0.1:9999',
+          target: 'https://10.33.36.243:8080',
           changeOrigin: true,
           secure:false,
         },
-        'store':
+        '/store':
         {
-          target: 'https://127.0.0.1:9999',
+          target: 'https://10.33.36.243:8081',
           changeOrigin: true,
           secure:false,
         }
-
      },
   },}
 

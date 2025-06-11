@@ -81,7 +81,7 @@ function upload_file (param: UploadFileParam) {
   flex-direction: column;
   justify-content: center; /* 内容垂直居中 */
   align-items: center;
-  height: 475px; /* 调整高度 */
+  height: 400px; /* 调整高度 */
   width: 100%; /* 调整宽度 */
 }
 </style>

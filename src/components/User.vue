@@ -135,8 +135,10 @@
       margin-top: 30px;
       border-radius: 10px;
       width: 90%;
-      height: 550px;
       border: 1px solid;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh
     }
   </style>
   
